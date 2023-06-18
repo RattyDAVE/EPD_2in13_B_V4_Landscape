@@ -21,3 +21,7 @@ epd.imageblack.text("RPi Pico", 0, 40, 0x00)
 epd.imagered.text("Hello World", 0, 55, 0x00)
 epd.display()
 ```
+
+Resources
+- https://www.waveshare.com/wiki/Pico-ePaper-2.13-B
+- https://www.waveshare.com/w/upload/d/d8/2.13inch_e-Paper_%28B%29_V3_Specification.pdf
