@@ -35,7 +35,7 @@ epd.display()
 ```
 
 
-Draw the original shape
+## Draw the original shape
 
 The following methods to draw shapes on framebuffer。
 
@@ -83,7 +83,7 @@ epd.imagered.fill_rect(x, y, w, h, c)
 Draws a rectangle at a given location, size, and color. The rect method only draws 1 pixel outline, while th fill_rect method for drawing contour and interior.
 
 
-Draw Text
+## Draw Text
 
 ```python
 epd.imageblack.text(s, x, y[, c])
@@ -92,7 +92,7 @@ epd.imagered.text(s, x, y[, c])
 
 Use coordinates as top left corner of text to write text to FrameBuffer . The color of the text can be defined by optional parameters, but the default value is 1. The size of all characters is 8x8 pixels, and currently the font cannot be changed.
 
-Other methods
+## Other methods
 
 ```python
 epd.imageblack.scroll(xstep, ystep)
