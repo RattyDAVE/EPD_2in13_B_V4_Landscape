@@ -36,6 +36,10 @@ epd.display()
 
 ## Methods
 
+```python
+epd.Clear(0xff, 0xff)
+```
+
 Directly writes to display with one colour.
 
 epd.Clear(colorblack, colorred)
@@ -43,14 +47,11 @@ epd.Clear(colorblack, colorred)
 - 0xff - OFF
 
 ```python
-epd.Clear(0xff, 0xff)
+epd.display()
 ```
 
 Writes frame buffer to display.
 
-```python
-epd.display()
-```
 
 ### Draw the original shape
 
