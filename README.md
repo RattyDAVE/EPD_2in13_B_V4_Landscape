@@ -34,8 +34,9 @@ epd.imagered.text("Hello World", 0, 55, 0x00)
 epd.display()
 ```
 
+## Methods
 
-## Draw the original shape
+### Draw the original shape
 
 The following methods to draw shapes on framebuffer。
 
@@ -83,7 +84,7 @@ epd.imagered.fill_rect(x, y, w, h, c)
 Draws a rectangle at a given location, size, and color. The rect method only draws 1 pixel outline, while th fill_rect method for drawing contour and interior.
 
 
-## Draw Text
+### Draw Text
 
 ```python
 epd.imageblack.text(s, x, y[, c])
@@ -92,7 +93,7 @@ epd.imagered.text(s, x, y[, c])
 
 Use coordinates as top left corner of text to write text to FrameBuffer . The color of the text can be defined by optional parameters, but the default value is 1. The size of all characters is 8x8 pixels, and currently the font cannot be changed.
 
-## Other methods
+### Other methods
 
 ```python
 epd.imageblack.scroll(xstep, ystep)
@@ -110,10 +111,6 @@ Draw another FrameBuffer on the current one at the given coordinates`. If key is
 
 This method works between instances of FrameBuffer with different formats, but due to color format mismatch, the resulting color may be unexpected.
 
-
-
-
-
-Resources
+## Resources
 - https://www.waveshare.com/wiki/Pico-ePaper-2.13-B
 - https://www.waveshare.com/w/upload/d/d8/2.13inch_e-Paper_%28B%29_V3_Specification.pdf
