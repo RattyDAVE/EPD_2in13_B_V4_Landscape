@@ -9,6 +9,18 @@ To use:
 epd = EPD_2in13_B_V4_Landscape()
 ```
 
+Example test usage
+```python
+from EPD_2in13_B_V4_Landscape import EPD_2in13_B_V4_Landscape
+
+epd = EPD_2in13_B_V4_Landscape()
+    
+epd.imageblack.fill(0xff)
+epd.imagered.fill(0xff)
+epd.imageblack.text("This is a Test", 0, 10, 0x00)
+epd.display()
+```
+
 All other methods function as normal.
 
 ```python
