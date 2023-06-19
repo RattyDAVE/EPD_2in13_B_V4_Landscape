@@ -34,10 +34,10 @@ class EPD_2in13_B_V4_Landscape:
         self.spi.init(baudrate=4000_000)
         self.dc_pin = Pin(DC_PIN, Pin.OUT)
                 
-        self.buffer_balck = bytearray(self.width * self.height // 8)
+        self.buffer_black = bytearray(self.width * self.height // 8)
         self.buffer_red = bytearray(self.width * self.height // 8)
         
-        self.imageblack = framebuf.FrameBuffer(self.buffer_balck, self.width, self.height, framebuf.MONO_VLSB)
+        self.imageblack = framebuf.FrameBuffer(self.buffer_black, self.width, self.height, framebuf.MONO_VLSB)
         self.imagered = framebuf.FrameBuffer(self.buffer_red, self.width, self.height, framebuf.MONO_VLSB)
         self.init()
 
@@ -152,7 +152,7 @@ class EPD_2in13_B_V4_Landscape:
         h = int(self.height / 8)
         for j in range(0, self.width):
             for i in range(0, h):
-                self.send_data(reverse(self.buffer_balck[i * self.width + (self.width - j - 1)]))
+                self.send_data(reverse(self.buffer_black[i * self.width + (self.width - j - 1)]))
                 
         self.send_command(0x26)
         h = int(self.height / 8)
