@@ -58,12 +58,20 @@ class EPD_2in13_B_V4_Landscape:
 
     # Hardware reset
     def reset(self):
-        self.digital_write(self.reset_pin, 1)
-        self.delay_ms(50)
+        #self.digital_write(self.reset_pin, 1)
+        #self.delay_ms(50)
+        #self.digital_write(self.reset_pin, 0)
+        #self.delay_ms(2)
+        #self.digital_write(self.reset_pin, 1)
+        #self.delay_ms(50)
+
+        #Changes per spec sheet
         self.digital_write(self.reset_pin, 0)
         self.delay_ms(2)
         self.digital_write(self.reset_pin, 1)
-        self.delay_ms(50)
+        self.delay_ms(2)
+
+    
 
     def send_command(self, command):
         self.digital_write(self.dc_pin, 0)
@@ -116,19 +124,21 @@ class EPD_2in13_B_V4_Landscape:
 
     def init(self):
         print('init')
+
+        #Spec Sheet Checked#
         self.reset()
-        
         self.ReadBusy()   
         self.send_command(0x12)  #SWRESET
         self.ReadBusy()   
-
+        ####
+        
         self.send_command(0x01) #Driver output control      
         self.send_data(0xf9)
         self.send_data(0x00)
         self.send_data(0x00)
 
         self.send_command(0x11) #data entry mode       
-        self.send_data(0x03)
+        self.send_data(0x03) #Portrait
 
         self.SetWindows(0, 0, self.height-1, self.width-1)
         self.SetCursor(0, 0)
