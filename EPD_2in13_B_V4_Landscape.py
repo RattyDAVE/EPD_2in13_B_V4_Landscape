@@ -2,6 +2,11 @@ from machine import Pin, SPI
 import framebuf
 import utime
 
+#Portrait
+#EPD_WIDTH = 128  # Width is really 122 pixels, but the code needs it to be divisible by 8
+#EPD_HEIGHT = 250
+
+#Landscape
 EPD_WIDTH = 250
 EPD_HEIGHT = 128  # height is really 122 pixels, but the code needs it to be divisible by 8
 
@@ -10,12 +15,15 @@ DC_PIN          = 8
 CS_PIN          = 9
 BUSY_PIN        = 13
 
+
+### Temp Soloution used in display() only. 
 lookup = [
     0x0, 0x8, 0x4, 0xc, 0x2, 0xa, 0x6, 0xe, 0x1, 0x9, 0x5, 0xd, 0x3, 0xb, 0x7, 0xf
 ]
 
 def reverse(n):
     return (lookup[n & 0b1111] << 4) | (lookup[n >> 4])
+### END
 
 class EPD_2in13_B_V4_Landscape:
     def __init__(self):
@@ -36,7 +44,12 @@ class EPD_2in13_B_V4_Landscape:
                 
         self.buffer_black = bytearray(self.width * self.height // 8)
         self.buffer_red = bytearray(self.width * self.height // 8)
-        
+
+
+        #Portrait
+        #self.imageblack = framebuf.FrameBuffer(self.buffer_black, self.width, self.height, framebuf.MONO_HLS)
+        #self.imagered = framebuf.FrameBuffer(self.buffer_red, self.width, self.height, framebuf.MONO_HLS)        
+        #Landscape
         self.imageblack = framebuf.FrameBuffer(self.buffer_black, self.width, self.height, framebuf.MONO_VLSB)
         self.imagered = framebuf.FrameBuffer(self.buffer_red, self.width, self.height, framebuf.MONO_VLSB)
         self.init()
@@ -171,6 +184,12 @@ class EPD_2in13_B_V4_Landscape:
                 self.send_data(reverse(self.buffer_red[i * self.width + (self.width - j - 1)]))              
         self.TurnOnDisplay()
 
+    #def display(self):
+    #    self.send_command(0x24)
+    #    self.send_data1(self.buffer_black)
+    #    self.send_command(0x26)
+    #    self.send_data1(self.buffer_red)  
+    #    self.TurnOnDisplay()
     
     def Clear(self, colorblack, colorred):
         self.send_command(0x24)
