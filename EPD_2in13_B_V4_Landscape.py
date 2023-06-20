@@ -8,7 +8,7 @@ import utime
 
 #Landscape
 EPD_WIDTH = 250
-EPD_HEIGHT = 128  # height is really 122 pixels, but the code needs it to be divisible by 8
+EPD_HEIGHT = 122  # height is really 122 pixels, but the code needs it to be divisible by 8
 
 RST_PIN         = 12
 DC_PIN          = 8
@@ -35,7 +35,7 @@ class EPD_2in13_B_V4_Landscape:
         if EPD_HEIGHT % 8 == 0:
             self.height = EPD_HEIGHT
         else :
-            self.HEIGHT = (EPD_HEIGHT // 8) * 8 + 8
+            self.height = (EPD_HEIGHT // 8) * 8 + 8
         self.width = EPD_WIDTH
                
         self.spi = SPI(1)
@@ -105,11 +105,11 @@ class EPD_2in13_B_V4_Landscape:
         self.digital_write(self.cs_pin, 1)
         
     def ReadBusy(self):
-        print('busy')
+        #print('busy')
         while(self.digital_read(self.busy_pin) == 1): 
             self.delay_ms(10) 
-        print('busy release')
-        self.delay_ms(20)
+        #print('busy release')
+        #self.delay_ms(20)
         
     def TurnOnDisplay(self):
         self.send_command(0x20)  # Activate Display Update Sequence
@@ -238,3 +238,4 @@ if __name__=='__main__':
     epd.delay_ms(2000)
     print("sleep")
     epd.sleep()
+
