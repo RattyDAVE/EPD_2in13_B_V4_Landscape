@@ -47,8 +47,8 @@ class EPD_2in13_B_V4_Landscape:
 
 
         #Portrait
-        #self.imageblack = framebuf.FrameBuffer(self.buffer_black, self.width, self.height, framebuf.MONO_HLS)
-        #self.imagered = framebuf.FrameBuffer(self.buffer_red, self.width, self.height, framebuf.MONO_HLS)        
+        #self.imageblack = framebuf.FrameBuffer(self.buffer_black, self.width, self.height, framebuf.MONO_HLSB)
+        #self.imagered = framebuf.FrameBuffer(self.buffer_red, self.width, self.height, framebuf.MONO_HLSB)
         #Landscape
         self.imageblack = framebuf.FrameBuffer(self.buffer_black, self.width, self.height, framebuf.MONO_VLSB)
         self.imagered = framebuf.FrameBuffer(self.buffer_red, self.width, self.height, framebuf.MONO_VLSB)
@@ -151,7 +151,7 @@ class EPD_2in13_B_V4_Landscape:
         self.send_data(0x00)
 
         self.send_command(0x11) #data entry mode       
-        self.send_data(0x03) #Portrait
+        self.send_data(0x03) #Portrait << INVESTIGATION NEEDED.
 
         self.SetWindows(0, 0, self.height-1, self.width-1)
         self.SetCursor(0, 0)
@@ -238,4 +238,3 @@ if __name__=='__main__':
     epd.delay_ms(2000)
     print("sleep")
     epd.sleep()
-
